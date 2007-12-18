@@ -3,7 +3,7 @@
 **************************************************************************
 
 Plugin Name:     SyntaxHighlighter Plus
-Plugin URI:      http:/wthislab.com/2007/12/16/release-wordpress-plugin-syntaxhighlighter-plus/
+Plugin URI:      http://thislab.com/2007/12/16/release-wordpress-plugin-syntaxhighlighter-plus/
 Version:         0.12
 Description:     An advanced upload-and-activate WordPress implementation of Alex Gorbatchev's <a href="http://code.google.com/p/syntaxhighlighter/">SyntaxHighlighter</a> JavaScript code highlighting package. See WordPress.com's "<a href="http://faq.wordpress.com/2007/09/03/how-do-i-post-source-code/">How do I post source code?</a>" for details.
 Author:          <a href="http://thislab.com/">Fred Wu</a>
