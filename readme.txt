@@ -1,13 +1,15 @@
-=== SyntaxHighlighter ===
-Contributors: matt, Viper007Bond, mdawaffe
-Tags: code, sourcecode, php, xhtml, html, css
+=== SyntaxHighlighter Plus ===
+Contributors: matt, Viper007Bond, mdawaffe, Fred Wu
+Tags: code, sourcecode, php, xhtml, html, css, syntax, highlight
 Requires at least: 2.0
-Tested up to: 2.3.0
+Tested up to: 2.3.1
 Stable tag: trunk
 
 Easily post source code such as PHP or HTML and display it in a styled box.
 
 == Description ==
+
+SyntaxHighlighter Plus is a Wordpress plugin for code syntax highlighting. It is an enhanced version of the original SyntaxHighlighter by Matt, Viper007Bond and mdawaffe. Please give them a big applause for making such a great plugin!
 
 SyntaxHighlighter allows you to easily post syntax highlighted code all without loosing it's formatting or making an manual changes.
 
@@ -84,28 +86,29 @@ Find `[sourcecode language='css']code here[/sourcecode]` too long to type? Here'
 
 * `[source language='css']code here[/source]`
 * `[code language='css']code here[/code]`
-
-
 * `[sourcecode lang='css']code here[/sourcecode]`
 * `[source lang='css']code here[/source]`
 * `[code lang='css']code here[/code]`
-
-
 * `[sourcecode='css']code here[/sourcecode]`
 * `[source='css']code here[/source]`
 * `[code='css']code here[/code]`
+* `[lang='css']code here[/lang]`
+* `[css]code here[/css]` (or any of the supported language)
+
+Note: Quotation marks around the language can be omitted for even shorter and neater syntax. :-)
 
 == ChangeLog ==
 
-**Version 1.1.0**
+**Version 0.12**
 
-* mdawaffe [fixed](http://dev.wp-plugins.org/ticket/703) an encoding issue relating to kses and users without the `unfiltered_html` capability. Mad props to mdawaffe.
+* Appeared on the Wordpress plugins site.
+* Fixed readme.txt.
+* Cleaned up the files.
 
-**Version 1.0.1**
+**Version 0.11**
 
-* Minor CSS fixes.
-* Filter text widgets to allow posting of code.
+* Added more syntax variants.
 
-**Version 1.0.0**
+**Version 0.10**
 
 * Initial release!
