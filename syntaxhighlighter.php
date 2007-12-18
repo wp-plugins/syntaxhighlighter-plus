@@ -124,6 +124,34 @@ class AGSyntaxHighlighter {
 		if ( stristr( $content, '[sourcecode' ) && stristr( $content, '[/sourcecode]' ) ) return TRUE;
 		if ( stristr( $content, '[source' ) && stristr( $content, '[/source]' ) ) return TRUE;
 		if ( stristr( $content, '[code' ) && stristr( $content, '[/code]' ) ) return TRUE;
+		if ( stristr( $content, '[lang' ) && stristr( $content, '[/lang]' ) ) return TRUE;
+		
+		if ( stristr( $content, '[cpp' ) && stristr( $content, '[/cpp]' ) ) return TRUE;
+		if ( stristr( $content, '[c++' ) && stristr( $content, '[/c++]' ) ) return TRUE;
+		if ( stristr( $content, '[c#' ) && stristr( $content, '[/c#]' ) ) return TRUE;
+		if ( stristr( $content, '[c-sharp' ) && stristr( $content, '[/c-sharp]' ) ) return TRUE;
+		if ( stristr( $content, '[csharp' ) && stristr( $content, '[/csharp]' ) ) return TRUE;
+		if ( stristr( $content, '[css' ) && stristr( $content, '[/css]' ) ) return TRUE;
+		if ( stristr( $content, '[delphi' ) && stristr( $content, '[/delphi]' ) ) return TRUE;
+		if ( stristr( $content, '[pascal' ) && stristr( $content, '[/pascal]' ) ) return TRUE;
+		if ( stristr( $content, '[java' ) && stristr( $content, '[/java]' ) ) return TRUE;
+		if ( stristr( $content, '[js' ) && stristr( $content, '[/js]' ) ) return TRUE;
+		if ( stristr( $content, '[jscript' ) && stristr( $content, '[/jscript]' ) ) return TRUE;
+		if ( stristr( $content, '[javascript' ) && stristr( $content, '[/javascript]' ) ) return TRUE;
+		if ( stristr( $content, '[php' ) && stristr( $content, '[/php]' ) ) return TRUE;
+		if ( stristr( $content, '[py' ) && stristr( $content, '[/py]' ) ) return TRUE;
+		if ( stristr( $content, '[python' ) && stristr( $content, '[/python]' ) ) return TRUE;
+		if ( stristr( $content, '[rb' ) && stristr( $content, '[/rb]' ) ) return TRUE;
+		if ( stristr( $content, '[ruby' ) && stristr( $content, '[/ruby]' ) ) return TRUE;
+		if ( stristr( $content, '[rails' ) && stristr( $content, '[/rails]' ) ) return TRUE;
+		if ( stristr( $content, '[ror' ) && stristr( $content, '[/ror]' ) ) return TRUE;
+		if ( stristr( $content, '[sql' ) && stristr( $content, '[/sql]' ) ) return TRUE;
+		if ( stristr( $content, '[vb' ) && stristr( $content, '[/vb]' ) ) return TRUE;
+		if ( stristr( $content, '[vb.net' ) && stristr( $content, '[/vb.net]' ) ) return TRUE;
+		if ( stristr( $content, '[xml' ) && stristr( $content, '[/xml]' ) ) return TRUE;
+		if ( stristr( $content, '[html' ) && stristr( $content, '[/html]' ) ) return TRUE;
+		if ( stristr( $content, '[xhtml' ) && stristr( $content, '[/xhtml]' ) ) return TRUE;
+		if ( stristr( $content, '[xslt' ) && stristr( $content, '[/xslt]' ) ) return TRUE;
 
 		return FALSE;
 	}
@@ -132,11 +160,11 @@ class AGSyntaxHighlighter {
 	// This function is a wrapper for preg_match_all() that grabs all BBCode calls
 	// It's in a seperate function since it's used in mulitple places (makes it easier to edit)
 	function GetBBCode( $content, $addslashes = FALSE ) {
-		$regex = '/\[(sourcecod|sourc|cod)(e language=|e lang=|e=)';
+		$regex = '/\[(sourcecode|source|code|lang|)( language=| lang=|=|)';
 		if ( $addslashes ) $regex .= '\\\\';
 		$regex .= '([\'"]|)' . $this->languagesregex;
 		if ( $addslashes ) $regex .= '\\\\';
-		$regex .= '\3\](.*?)\[\/\1e\]/si';
+		$regex .= '\3\](.*?)\[\/(\1|\4)\]/si';
 
 		preg_match_all( $regex, $content, $matches, PREG_SET_ORDER );
 
