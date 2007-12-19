@@ -99,7 +99,11 @@ Note: Quotation marks around the language can be omitted for even shorter and ne
 
 == ChangeLog ==
 
-**Version 0.12**
+**Version 0.13**
+
+* Changed plugin folder to 'syntaxhighlighter-plus'.
+
+**Version 0.12 (broken)**
 
 * Appeared on the Wordpress plugins site.
 * Fixed readme.txt.
