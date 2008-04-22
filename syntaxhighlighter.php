@@ -4,7 +4,7 @@
 
 Plugin Name:     SyntaxHighlighter Plus
 Plugin URI:      http://thislab.com/2007/12/16/release-wordpress-plugin-syntaxhighlighter-plus/
-Version:         0.13
+Version:         0.14
 Description:     An advanced upload-and-activate WordPress implementation of Alex Gorbatchev's <a href="http://code.google.com/p/syntaxhighlighter/">SyntaxHighlighter</a> JavaScript code highlighting package. See WordPress.com's "<a href="http://faq.wordpress.com/2007/09/03/how-do-i-post-source-code/">How do I post source code?</a>" for details.
 Author:          <a href="http://thislab.com/">Fred Wu</a>
 Original Author: <a href="http://photomatt.net/">Matt</a>, <a href="http://www.viper007bond.com/">Viper007Bond</a>, and <a href="http://blogwaffe.com/">mdawaffe</a>
@@ -64,10 +64,12 @@ class AGSyntaxHighlighter {
 
 	// Set some variables now that we've given all other plugins a chance to load
 	function SetVariables() {
-		$this->pluginurl = apply_filters( 'agsyntaxhighlighter_url', get_bloginfo( 'wpurl' ) . '/wp-content/plugins/syntaxhighlighter-plus/files/' );
+		$this->pluginurl = apply_filters( 'agsyntaxhighlighter_url', get_bloginfo( 'wpurl' ) . '/wp-content/plugins/syntaxhighlighter-plus/shlfiles/' );
 
 		// Define all allowed languages and allow plugins to modify this
 		$this->languages = apply_filters( 'agsyntaxhighlighter_languages', array(
+			'bash'       => 'shBrushBash.js',
+			'sh'         => 'shBrushBash.js',
 			'cpp'        => 'shBrushCpp.js',
 			'c'          => 'shBrushCpp.js',
 			'c++'        => 'shBrushCpp.js',
@@ -126,6 +128,8 @@ class AGSyntaxHighlighter {
 		if ( stristr( $content, '[code' ) && stristr( $content, '[/code]' ) ) return TRUE;
 		if ( stristr( $content, '[lang' ) && stristr( $content, '[/lang]' ) ) return TRUE;
 		
+		if ( stristr( $content, '[bash' ) && stristr( $content, '[/bash]' ) ) return TRUE;
+		if ( stristr( $content, '[sh' ) && stristr( $content, '[/sh]' ) ) return TRUE;
 		if ( stristr( $content, '[cpp' ) && stristr( $content, '[/cpp]' ) ) return TRUE;
 		if ( stristr( $content, '[c++' ) && stristr( $content, '[/c++]' ) ) return TRUE;
 		if ( stristr( $content, '[c#' ) && stristr( $content, '[/c#]' ) ) return TRUE;
