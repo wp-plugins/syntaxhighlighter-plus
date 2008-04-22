@@ -2,7 +2,7 @@
 Contributors: matt, Viper007Bond, mdawaffe, Fred Wu
 Tags: code, sourcecode, php, xhtml, html, css, syntax, highlight
 Requires at least: 2.0
-Tested up to: 2.3.1
+Tested up to: 2.5.x
 Stable tag: trunk
 
 Easily post source code such as PHP or HTML and display it in a styled box.
@@ -15,6 +15,7 @@ SyntaxHighlighter allows you to easily post syntax highlighted code all without 
 
 It supports the following languages (the alias for use in the post is listed next to the name):
 
+* Bash -- `bash`, `sh`
 * C++ -- `cpp`, `c`, `c++`
 * C# -- `c#`, `c-sharp`, `csharp`
 * CSS -- `css`
@@ -98,6 +99,11 @@ Find `[sourcecode language='css']code here[/sourcecode]` too long to type? Here'
 Note: Quotation marks around the language can be omitted for even shorter and neater syntax. :-)
 
 == ChangeLog ==
+
+**Version 0.14**
+
+* Added support for Bash (thanks to [Nick Anderson](http://www.cmdln.org/2008/04/07/syntaxhighlighter-plus-patch/))
+* Now supports Wordpress MU (thanks to [Tim](http://tim.diary.tw/2008/03/05/syntaxhighlighter-plus/))
 
 **Version 0.13**
 
