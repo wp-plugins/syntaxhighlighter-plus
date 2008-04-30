@@ -37,6 +37,8 @@ This plugin uses the [SyntaxHighlighter JavaScript package by Alex Gorbatchev](h
 
 To upgrade from a previous version of this plugin, delete the entire folder and files from the previous version of the plugin and then follow the installation instructions below.
 
+Important: If you have made any changes to the CSS file, please make sure to back it up before upgrade!
+
 ###Uploading The Plugin###
 
 Extract all files from the ZIP file, making sure to keep the file structure intact, and then upload it to `/wp-content/plugins/`.
@@ -45,7 +47,7 @@ This should result in the following file structure:
 
 `- wp-content
     - plugins
-        - syntaxhighlighter
+        - syntaxhighlighter-plus
             | readme.txt
             | screenshot-1.png
             | syntaxhighlighter.php
@@ -77,6 +79,10 @@ Make sure your theme's footer has `<?php wp_footer(); ?>` somewhere in it, other
 
 Make sure you correctly use the BBCode with a valid language attribute. A malformed usage of it won't result in replacement.
 
+= I use the visual editor, my code has lots of line breaks inserted, what do I do? =
+
+Use 'shift + return' instead of 'return' when changing lines.
+
 == Screenshots ==
 
 1. Example code display. In this particular example, the default `wp-config.php` file contents are shown.
@@ -99,6 +105,10 @@ Find `[sourcecode language='css']code here[/sourcecode]` too long to type? Here'
 Note: Quotation marks around the language can be omitted for even shorter and neater syntax. :-)
 
 == ChangeLog ==
+
+**Version 0.15**
+
+* Fixed the IE scroll bar issue (backup your CSS file before upgrade!)
 
 **Version 0.14**
 
