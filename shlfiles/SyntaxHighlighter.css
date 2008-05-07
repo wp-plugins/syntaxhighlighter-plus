@@ -11,7 +11,7 @@
 	/* fixes for IE: "overflow: auto" causes unnecessary vertical bar */
 	/* corrects bottom scroll bar overlapping */
 	overflow-y: hidden;
-	padding-bottom: expression(this.scrollWidth > this.offsetWidth ? 15 : 0);
+	padding-bottom: expression(this.scrollWidth > this.offsetWidth ? '15px' : 'none');
 }
 
 .dp-highlighter span
@@ -20,6 +20,8 @@
 	padding: 0 !important;
 	border: 1px transparent solid !important;
 	background: transparent !important;
+	
+	_border-color: #fff; /*For IE6-*/
 }
 
 .dp-highlighter .bar

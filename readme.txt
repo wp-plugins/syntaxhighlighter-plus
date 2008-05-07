@@ -106,6 +106,10 @@ Note: Quotation marks around the language can be omitted for even shorter and ne
 
 == ChangeLog ==
 
+**Version 0.15b**
+
+* CSS fixes for IE6
+
 **Version 0.15a**
 
 * enhanced CSS
