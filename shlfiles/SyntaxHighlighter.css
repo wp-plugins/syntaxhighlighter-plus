@@ -75,12 +75,7 @@
 {
 	border: 0 !important;
 	
-	padding-top: 0 !important;
-	padding-right: 0 !important;
-	padding-bottom: 0 !important;
-	border-top: 0 !important;
-	border-right: 0 !important;
-	border-bottom: 0 !important;
+	padding: 0 !important;
 	margin: 0 !important;
 }
 
@@ -114,12 +109,8 @@
 	color: #000 !important;
 	background-color: #f8f8f8 !important;
 	
-	padding-top: 0 !important;
-	padding-right: 0 !important;
-	padding-bottom: 0 !important;
-	border-top: 0 !important;
-	border-right: 0 !important;
-	border-bottom: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
 	margin: 0 !important;
 }
 
@@ -127,12 +118,8 @@
 {
 	background-color: #fff !important;
 	
-	padding-top: 0 !important;
-	padding-right: 0 !important;
-	padding-bottom: 0 !important;
-	border-top: 0 !important;
-	border-right: 0 !important;
-	border-bottom: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
 	margin: 0 !important;
 }
 
