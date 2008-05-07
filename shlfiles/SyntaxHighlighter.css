@@ -46,16 +46,32 @@
 .dp-highlighter ol li,
 .dp-highlighter .columns div
 {
-	border-left: 3px solid #6CE26C;
-	background-color: #f8f8f8;
-	padding-left: 10px;
-	line-height: 14px;
+	border-left: 3px solid #6CE26C !important;
+	background-color: #f8f8f8 !important;
+	padding-left: 10px !important;
+	line-height: 14px !important;
+	
+	padding-top: 0 !important;
+	padding-right: 0 !important;
+	padding-bottom: 0 !important;
+	border-top: 0 !important;
+	border-right: 0 !important;
+	border-bottom: 0 !important;
+	margin: 0 !important;
 }
 
 .dp-highlighter.nogutter ol li,
 .dp-highlighter.nogutter .columns div
 {
-	border: 0;
+	border: 0 !important;
+	
+	padding-top: 0 !important;
+	padding-right: 0 !important;
+	padding-bottom: 0 !important;
+	border-top: 0 !important;
+	border-right: 0 !important;
+	border-bottom: 0 !important;
+	margin: 0 !important;
 }
 
 .dp-highlighter .columns 
@@ -72,18 +88,42 @@
 
 .dp-highlighter ol li.alt 
 {
-	background-color: #fff;
+	background-color: #fff !important;
+	
+	padding-top: 0 !important;
+	padding-right: 0 !important;
+	padding-bottom: 0 !important;
+	border-top: 0 !important;
+	border-right: 0 !important;
+	border-bottom: 0 !important;
+	margin: 0 !important;
 }
 
 .dp-highlighter ol li div
 {
-	color: Black;
-	background-color: #f8f8f8;
+	color: #000 !important;
+	background-color: #f8f8f8 !important;
+	
+	padding-top: 0 !important;
+	padding-right: 0 !important;
+	padding-bottom: 0 !important;
+	border-top: 0 !important;
+	border-right: 0 !important;
+	border-bottom: 0 !important;
+	margin: 0 !important;
 }
 
 .dp-highlighter ol li div.alt
 {
-	background-color: #fff;
+	background-color: #fff !important;
+	
+	padding-top: 0 !important;
+	padding-right: 0 !important;
+	padding-bottom: 0 !important;
+	border-top: 0 !important;
+	border-right: 0 !important;
+	border-bottom: 0 !important;
+	margin: 0 !important;
 }
 
 /* Adjust some properties when collapsed */

@@ -106,6 +106,10 @@ Note: Quotation marks around the language can be omitted for even shorter and ne
 
 == ChangeLog ==
 
+**Version 0.15a**
+
+* enhanced CSS
+
 **Version 0.15**
 
 * Fixed the IE scroll bar issue (backup your CSS file before upgrade!)
