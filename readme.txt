@@ -106,6 +106,10 @@ Note: Quotation marks around the language can be omitted for even shorter and ne
 
 == ChangeLog ==
 
+**Version 0.16**
+
+* Ported SyntaxHighlighter 1.1.1 changes: 'Encode single quotes so `wptexturize()` doesn't transform them into fancy quotes and screw up code.'
+
 **Version 0.15b**
 
 * CSS fixes for IE6

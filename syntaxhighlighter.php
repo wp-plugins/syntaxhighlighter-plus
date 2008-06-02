@@ -4,7 +4,7 @@
 
 Plugin Name:     SyntaxHighlighter Plus
 Plugin URI:      http://thislab.com/2007/12/16/release-wordpress-plugin-syntaxhighlighter-plus/
-Version:         0.15b
+Version:         0.16
 Description:     An advanced upload-and-activate WordPress implementation of Alex Gorbatchev's <a href="http://code.google.com/p/syntaxhighlighter/">SyntaxHighlighter</a> JavaScript code highlighting package. See WordPress.com's "<a href="http://faq.wordpress.com/2007/09/03/how-do-i-post-source-code/">How do I post source code?</a>" for details.
 Author:          <a href="http://thislab.com/">Fred Wu</a>
 Original Author: <a href="http://photomatt.net/">Matt</a>, <a href="http://www.viper007bond.com/">Viper007Bond</a>, and <a href="http://blogwaffe.com/">mdawaffe</a>
@@ -326,7 +326,7 @@ class AGSyntaxHighlighter {
 		// Loop through each match and replace the BBCode with HTML
 		foreach ( (array) $matches as $match ) {
 			$language = strtolower( $match[4] );
-			$content = str_replace( $match[0], '<pre class="syntax-highlight:' . $language . "\">" . htmlspecialchars( $match[5] ) . "</pre>", $content );
+			$content = str_replace( $match[0], '<pre class="syntax-highlight:' . $language . "\">" . htmlspecialchars( $match[5], ENT_QUOTES ) . "</pre>", $content );
 			$this->jsfiles2load[$this->languages[$language]] = TRUE;
 		}
 		
