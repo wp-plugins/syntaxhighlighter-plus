@@ -21,6 +21,13 @@
  * the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA 
  */
 
+/**
+ * Changes by Fred Wu:
+ *
+ * [2008-06-28]
+ * + added 'GetKeywords_without' to fix Bash keywords and variables conflict
+ */
+
 //
 // create namespaces
 //
@@ -566,6 +573,11 @@ dp.sh.Highlighter.prototype.Highlight = function(code)
 dp.sh.Highlighter.prototype.GetKeywords = function(str) 
 {
 	return '\\b' + str.replace(/ /g, '\\b|\\b') + '\\b';
+}
+
+dp.sh.Highlighter.prototype.GetKeywords_without = function(str, str_wo) 
+{
+	return '\\b' + str.replace(/ /g, '\\b(?!' + str_wo + ')|\\b') + '\\b';
 }
 
 dp.sh.BloggerMode = function()

@@ -1,5 +1,5 @@
 /**
- *  Author: Saúl Martínez Vidals
+ *  Author: SaÃºl MartÃ­nez Vidals
  *  http://buglog-saul.blogspot.com/
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -15,6 +15,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Changes by Fred Wu:
+ *
+ * [2008-06-28]
+ * + added 'GetKeywords_without' to the shCore.js file to fix Bash keywords and variables conflict
+ */
 dp.sh.Brushes.Bash = function()
 {
     var builtins =  'alias bg bind break builtin cd command compgen complete continue ' +
@@ -42,7 +48,7 @@ dp.sh.Brushes.Bash = function()
                     /* builtins */
                     {regex: new RegExp(this.GetKeywords(builtins), 'gm'), css: 'builtin'},
                     /* palabras reservadas */
-                    {regex: new RegExp(this.GetKeywords(keywords), 'gm'), css: 'keyword'}
+                    {regex: new RegExp(this.GetKeywords_without(keywords, '='), 'gm'), css: 'keyword'}
                     ];
 
     this.CssClass = 'dp-bash';
