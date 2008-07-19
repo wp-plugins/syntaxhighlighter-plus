@@ -106,6 +106,10 @@ Note: Quotation marks around the language can be omitted for even shorter and ne
 
 == ChangeLog ==
 
+**Version 0.18**
+
+* Added PHP as the default language if no language is specified (e.g. `[code][/code]`)
+
 **Version 0.17**
 
 * Fixed a bug in the Bash highlighting code which caused conflicts between keywords and variables highlights
