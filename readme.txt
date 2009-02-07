@@ -1,8 +1,8 @@
 === SyntaxHighlighter Plus ===
 Contributors: matt, Viper007Bond, mdawaffe, FredWu
-Tags: code, sourcecode, php, xhtml, html, css, syntax, highlight
+Tags: source, code, sourcecode, php, javascript, xhtml, html, css, syntax, highlight, highlighter
 Requires at least: 2.0
-Tested up to: 2.5.x
+Tested up to: 2.7.x
 Stable tag: trunk
 
 Easily post source code such as PHP or HTML and display it in a styled box.
@@ -20,9 +20,12 @@ It supports the following languages (the alias for use in the post is listed nex
 * C# -- `c#`, `c-sharp`, `csharp`
 * CSS -- `css`
 * Delphi -- `delphi`, `pascal`
+* Diff -- `diff`
+* Groovy -- `groovy`
 * Java -- `java`
 * JavaScript -- `js`, `jscript`, `javascript`
 * PHP -- `php`
+* Plain text -- `plain`, `text`
 * Python -- `py`, `python`
 * Ruby -- `rb`, `ruby`, `rails`, `ror`
 * SQL -- `sql`
@@ -37,6 +40,8 @@ This plugin uses the [SyntaxHighlighter JavaScript package by Alex Gorbatchev](h
 
 To upgrade from a previous version of this plugin, delete the entire folder and files from the previous version of the plugin and then follow the installation instructions below.
 
+* Starting from Wordpress 2.7, plugin upgrades are handled by Wordpress, there is no need to manually upload files.
+
 Important: If you have made any changes to the CSS file, please make sure to back it up before upgrade!
 
 ###Uploading The Plugin###
@@ -49,15 +54,21 @@ This should result in the following file structure:
     - plugins
         - syntaxhighlighter-plus
             | readme.txt
-            | screenshot-1.png
             | syntaxhighlighter.php
-            - files
-                | clipboard.swf
-                | shBrushCpp.js
-                | shBrushCSharp.js
-                | [...]
-                | shCore.js
-                | SyntaxHighlighter.css`
+            - syntaxhighlighter
+                - scripts
+                    | clipboard.swf
+                    | shBrushBash.js
+                    | shBrushCpp.js
+                    | shBrushCSharp.js
+                    | [...]
+                    | shCore.js
+	                | shLegacy.js
+                - src
+                    | shCore.js
+	                | shLegacy.js
+                - styles
+                    | SyntaxHighlighter.css`
 
 **See Also:** ["Installing Plugins" article on the WP Codex](http://codex.wordpress.org/Managing_Plugins#Installing_Plugins)
 
@@ -85,7 +96,7 @@ Use 'shift + return' instead of 'return' when changing lines.
 
 == Screenshots ==
 
-1. Example code display. In this particular example, the default `wp-config.php` file contents are shown.
+[SyntaxHighlighter Themes](http://alexgorbatchev.com/wiki/SyntaxHighlighter:Themes)
 
 == Other BBCode Methods ==
 
@@ -105,6 +116,11 @@ Find `[sourcecode language='css']code here[/sourcecode]` too long to type? Here'
 Note: Quotation marks around the language can be omitted for even shorter and neater syntax. :-)
 
 == ChangeLog ==
+
+**Version 1.0b1**
+
+* Upgraded the core engine to SyntaxHighlighter 2.0
+* Added configuration: themes
 
 **Version 0.18**
 

@@ -2,12 +2,12 @@
 
 **************************************************************************
 
-Plugin Name:     SyntaxHighlighter Plus
-Plugin URI:      http://thislab.com/2007/12/16/release-wordpress-plugin-syntaxhighlighter-plus/
-Version:         0.18
-Description:     An advanced upload-and-activate WordPress implementation of Alex Gorbatchev's <a href="http://code.google.com/p/syntaxhighlighter/">SyntaxHighlighter</a> JavaScript code highlighting package. See WordPress.com's "<a href="http://faq.wordpress.com/2007/09/03/how-do-i-post-source-code/">How do I post source code?</a>" for details.
-Author:          <a href="http://thislab.com/">Fred Wu</a>
-Original Author: <a href="http://photomatt.net/">Matt</a>, <a href="http://www.viper007bond.com/">Viper007Bond</a>, and <a href="http://blogwaffe.com/">mdawaffe</a>
+Plugin Name:      SyntaxHighlighter Plus
+Plugin URI:       http://thislab.com/2007/12/16/release-wordpress-plugin-syntaxhighlighter-plus/
+Version:          1.0b1
+Description:      An advanced upload-and-activate WordPress implementation of Alex Gorbatchev's <a href="http://code.google.com/p/syntaxhighlighter/">SyntaxHighlighter</a> JavaScript code highlighting package. See WordPress.com's "<a href="http://faq.wordpress.com/2007/09/03/how-do-i-post-source-code/">How do I post source code?</a>" for details. <strong><a href="options-general.php?page=syntaxhighlighter-plus/syntaxhighlighter.php">Click here for options</a></strong>.
+Author:           <a href="http://thislab.com/">Fred Wu</a>
+Original Authors: <a href="http://photomatt.net/">Matt</a>, <a href="http://www.viper007bond.com/">Viper007Bond</a>, and <a href="http://blogwaffe.com/">mdawaffe</a>
 
 **************************************************************************
 
@@ -40,7 +40,10 @@ class AGSyntaxHighlighter {
 		add_action( 'admin_head', array(&$this, 'AddStylesheet'), 1000 );
 		add_action( 'wp_footer', array(&$this, 'FileLoader'), 1000 );
 		add_action( 'admin_footer', array(&$this, 'FileLoader'), 1000 ); // For viewing comments in admin area
-
+		
+		// admin menu
+		add_action( 'admin_menu', array(&$this, 'syntaxhighlighterplus_admin_menu') );
+		
 		// Find and replace the BBCode
 		add_filter( 'the_content', array(&$this, 'BBCodeToHTML'), 8 );
 		add_filter( 'widget_text', array(&$this, 'BBCodeToHTML'), 8 );
@@ -61,11 +64,53 @@ class AGSyntaxHighlighter {
 		//add_filter( 'pre_comment_content', array(&$this, 'before_kses_normalization_comment'), 1 );
 		//add_filter( 'pre_comment_content', array(&$this, 'after_kses_normalization_comment'), 11 );
 	}
-
+	
+	function syntaxhighlighterplus_admin_menu()
+	{
+		if (function_exists('add_options_page'))
+		{
+			add_options_page(__('SyntaxHighlighter Plus Configuration'), __('SyntaxHighlighter Plus'), 8, __FILE__, array(&$this, 'syntaxhighlighterplus_config'));
+		}
+	}
+	
+	function syntaxhighlighterplus_config()
+	{
+		$themes = scandir(ABSPATH . PLUGINDIR . '/syntaxhighlighter-plus/syntaxhighlighter/styles/');
+		$options = get_option('syntaxhighlighterplus_options');
+		
+		if (isset($_POST['submit']))
+		{
+			$options['theme'] = $_POST['theme'];
+			update_option('syntaxhighlighterplus_options', $options);
+		}
+		
+		$o = '<div class="wrap">'."\n";
+		$o .= '<h2>'.__('SyntaxHighlighter Plus Configuration').'</h2>'."\n";
+		$o .= '<form action="options-general.php?page=syntaxhighlighter-plus/syntaxhighlighter.php" method="post" accept-charset="utf-8">'."\n";
+		$o .= '<h3>Choose a theme</h3>'."\n";
+		$o .= '<select name="theme" id="theme">'."\n";
+		
+		foreach ($themes as $theme)
+		{
+			if (substr($theme, -3) == 'css' && $theme != 'shCore.css')
+			{
+				$selected = $theme == $options['theme'] ? 'selected="selected"' : '';
+				
+				$o .= '	<option value="'.$theme.'" '.$selected.'>'.__($theme).'</option>'."\n";
+			}
+		}
+		
+		$o .= '</select>&nbsp;&nbsp;<a href="http://alexgorbatchev.com/wiki/SyntaxHighlighter:Themes" target="_blank">Theme Previews</a>'."\n";
+		$o .= '<p class="submit"><input type="submit" name="submit" value="'.__('Update Settings').' &raquo;" /></p>'."\n";
+		$o .= '</form>'."\n";
+		$o .= '</div>'."\n";
+		
+		echo $o;
+	}
 
 	// Set some variables now that we've given all other plugins a chance to load
 	function SetVariables() {
-		$this->pluginurl = apply_filters( 'agsyntaxhighlighter_url', get_bloginfo( 'wpurl' ) . '/wp-content/plugins/syntaxhighlighter-plus/shlfiles/' );
+		$this->pluginurl = apply_filters( 'agsyntaxhighlighter_url', get_bloginfo( 'wpurl' ) . '/wp-content/plugins/syntaxhighlighter-plus/' );
 
 		// Define all allowed languages and allow plugins to modify this
 		$this->languages = apply_filters( 'agsyntaxhighlighter_languages', array(
@@ -80,11 +125,16 @@ class AGSyntaxHighlighter {
 			'css'        => 'shBrushCss.js',
 			'delphi'     => 'shBrushDelphi.js',
 			'pascal'     => 'shBrushDelphi.js',
+			'diff'       => 'shBrushDiff.js',
+			'groovy'     => 'shBrushGroovy.js',
 			'java'       => 'shBrushJava.js',
 			'js'         => 'shBrushJScript.js',
 			'jscript'    => 'shBrushJScript.js',
 			'javascript' => 'shBrushJScript.js',
 			'php'        => 'shBrushPhp.js',
+			'plain'      => 'shBrushPlain.js',
+			'text'       => 'shBrushPlain.js',
+			''           => 'shBrushPlain.js',
 			'py'         => 'shBrushPython.js',
 			'python'     => 'shBrushPython.js',
 			'rb'         => 'shBrushRuby.js',
@@ -98,7 +148,6 @@ class AGSyntaxHighlighter {
 			'html'       => 'shBrushXml.js',
 			'xhtml'      => 'shBrushXml.js',
 			'xslt'       => 'shBrushXml.js',
-			''           => 'shBrushPhp.js',
 		) );
 
 		// Quote them to make them regex safe
@@ -118,7 +167,12 @@ class AGSyntaxHighlighter {
 
 	// We need to stick the stylesheet in the header for best results
 	function AddStylesheet() {
-		echo '	<link type="text/css" rel="stylesheet" href="' . $this->pluginurl . 'SyntaxHighlighter.css"></link>' . "\n";
+		echo '	<link type="text/css" rel="stylesheet" href="' . $this->pluginurl . 'syntaxhighlighter/styles/shCore.css"></link>' . "\n";
+		
+		$options = get_option('syntaxhighlighterplus_options');
+		$options['theme'] = isset($options['theme']) ? $options['theme'] : 'shThemeDefault.css';
+		
+		echo '	<link type="text/css" rel="stylesheet" href="' . $this->pluginurl . 'syntaxhighlighter/styles/'.$options['theme'].'"></link>' . "\n";
 	}
 
 
@@ -140,11 +194,15 @@ class AGSyntaxHighlighter {
 		if ( stristr( $content, '[css' ) && stristr( $content, '[/css]' ) ) return TRUE;
 		if ( stristr( $content, '[delphi' ) && stristr( $content, '[/delphi]' ) ) return TRUE;
 		if ( stristr( $content, '[pascal' ) && stristr( $content, '[/pascal]' ) ) return TRUE;
+		if ( stristr( $content, '[diff' ) && stristr( $content, '[/diff]' ) ) return TRUE;
+		if ( stristr( $content, '[groovy' ) && stristr( $content, '[/groovy]' ) ) return TRUE;
 		if ( stristr( $content, '[java' ) && stristr( $content, '[/java]' ) ) return TRUE;
 		if ( stristr( $content, '[js' ) && stristr( $content, '[/js]' ) ) return TRUE;
 		if ( stristr( $content, '[jscript' ) && stristr( $content, '[/jscript]' ) ) return TRUE;
 		if ( stristr( $content, '[javascript' ) && stristr( $content, '[/javascript]' ) ) return TRUE;
 		if ( stristr( $content, '[php' ) && stristr( $content, '[/php]' ) ) return TRUE;
+		if ( stristr( $content, '[plain' ) && stristr( $content, '[/plain]' ) ) return TRUE;
+		if ( stristr( $content, '[text' ) && stristr( $content, '[/text]' ) ) return TRUE;
 		if ( stristr( $content, '[py' ) && stristr( $content, '[/py]' ) ) return TRUE;
 		if ( stristr( $content, '[python' ) && stristr( $content, '[/python]' ) ) return TRUE;
 		if ( stristr( $content, '[rb' ) && stristr( $content, '[/rb]' ) ) return TRUE;
@@ -328,7 +386,7 @@ class AGSyntaxHighlighter {
 		// Loop through each match and replace the BBCode with HTML
 		foreach ( (array) $matches as $match ) {
 			$language = $match[4] == '' ? $this->default_language : strtolower( $match[4] );
-			$content = str_replace( $match[0], '<pre class="syntax-highlight:' . $language . "\">" . htmlspecialchars( $match[5], ENT_QUOTES ) . "</pre>", $content );
+			$content = str_replace( $match[0], '<pre class="brush: ' . $language . "\">" . htmlspecialchars( $match[5], ENT_QUOTES ) . "</pre>", $content );
 			$this->jsfiles2load[$this->languages[$language]] = TRUE;
 		}
 		
@@ -341,13 +399,12 @@ class AGSyntaxHighlighter {
 		?>
 
 <!-- SyntaxHighlighter Stuff -->
-<script type="text/javascript" src="<?php echo $this->pluginurl; ?>shCore.js"></script>
+<script type="text/javascript" src="<?php echo $this->pluginurl; ?>syntaxhighlighter/src/shCore.js"></script>
 <?php foreach ( $this->jsfiles2load as $filename => $foobar ) : ?>
-<script type="text/javascript" src="<?php echo $this->pluginurl . $filename; ?>"></script>
+<script type="text/javascript" src="<?php echo $this->pluginurl . 'syntaxhighlighter/scripts/' . $filename; ?>"></script>
 <?php endforeach; ?>
 <script type="text/javascript">
-	dp.SyntaxHighlighter.ClipboardSwf = '<?php echo $this->pluginurl; ?>clipboard.swf';
-	dp.SyntaxHighlighter.HighlightAll('code');
+	SyntaxHighlighter.all();
 </script>
 
 <?php
