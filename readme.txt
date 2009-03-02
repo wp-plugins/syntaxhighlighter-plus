@@ -24,10 +24,12 @@ It supports the following languages (the alias for use in the post is listed nex
 * Groovy -- `groovy`
 * Java -- `java`
 * JavaScript -- `js`, `jscript`, `javascript`
+* Perl -- `perl`, `pl`
 * PHP -- `php`
 * Plain text -- `plain`, `text`
 * Python -- `py`, `python`
 * Ruby -- `rb`, `ruby`, `rails`, `ror`
+* Scala -- `scala`
 * SQL -- `sql`
 * VB -- `vb`, `vb.net`
 * XML/HTML -- `xml`, `html`, `xhtml`, `xslt`
