@@ -119,7 +119,7 @@ class AGSyntaxHighlighter {
 			'Java'    => array('java'),
 			'JScript' => array('js', 'jscript', 'javascript'),
 			'Php'     => array('php'),
-			'Plain'   => array('plain', 'text'),
+			'Plain'   => array('', 'plain', 'text'),
 			'Python'  => array('py', 'python'),
 			'Ruby'    => array('rb', 'ruby', 'rails', 'ror'),
 			'Sql'     => array('sql'),

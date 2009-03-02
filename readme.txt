@@ -20,7 +20,7 @@ It supports the following languages (the alias for use in the post is listed nex
 * C# -- `c#`, `c-sharp`, `csharp`
 * CSS -- `css`
 * Delphi -- `delphi`, `pascal`
-* Diff -- `diff`, `patch`
+* Diff -- `diff`
 * Groovy -- `groovy`
 * Java -- `java`
 * JavaScript -- `js`, `jscript`, `javascript`
@@ -29,7 +29,7 @@ It supports the following languages (the alias for use in the post is listed nex
 * Python -- `py`, `python`
 * Ruby -- `rb`, `ruby`, `rails`, `ror`
 * SQL -- `sql`
-* VB -- `vb`, `vbnet`, `vb.net`
+* VB -- `vb`, `vb.net`
 * XML/HTML -- `xml`, `html`, `xhtml`, `xslt`
 
 This plugin uses the [SyntaxHighlighter JavaScript package by Alex Gorbatchev](http://code.google.com/p/syntaxhighlighter/).
@@ -119,8 +119,9 @@ Note: Quotation marks around the language can be omitted for even shorter and ne
 
 **Version 1.0b2**
 
+* Upgraded SyntaxHighlighter to 2.0.296
 * Added automatic SSL detection (thanks to g30rg3_x)
-* Added anti-XSS and XSRF  (thanks to g30rg3_x)
+* Added anti-XSS and XSRF (thanks to g30rg3_x)
 * Language aliases fix
 * Code clean up
 
@@ -128,7 +129,6 @@ Note: Quotation marks around the language can be omitted for even shorter and ne
 
 * Upgraded the core engine to SyntaxHighlighter 2.0
 * Added configuration: themes
-* Default language changed from PHP to plain text
 
 **Version 0.18**
 
@@ -148,7 +148,7 @@ Note: Quotation marks around the language can be omitted for even shorter and ne
 
 **Version 0.15a**
 
-* Enhanced CSS
+* enhanced CSS
 
 **Version 0.15**
 
