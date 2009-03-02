@@ -2,22 +2,30 @@
  * SyntaxHighlighter
  * http://alexgorbatchev.com/
  *
- * @version
- * 2.0.287 (February 06 2009)
+ * SyntaxHighlighter is donationware. If you are using it, please donate.
+ * http://alexgorbatchev.com/wiki/SyntaxHighlighter:Donate
  *
- * @author
- * Alex Gorbatchev
+ * @version
+ * 2.0.296 (March 01 2009)
  * 
  * @copyright
  * Copyright (C) 2004-2009 Alex Gorbatchev.
  *
- * Licensed under a GNU Lesser General Public License.
- * http://creativecommons.org/licenses/LGPL/2.1/
- *
- * SyntaxHighlighter is donationware. You are allowed to download, modify and distribute 
- * the source code in accordance with LGPL 2.1 license, however if you want to use 
- * SyntaxHighlighter on your site or include it in your product, you must donate.
- * http://alexgorbatchev.com/wiki/SyntaxHighlighter:Donate
+ * @license
+ * This file is part of SyntaxHighlighter.
+ * 
+ * SyntaxHighlighter is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * SyntaxHighlighter is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with SyntaxHighlighter.  If not, see <http://www.gnu.org/licenses/>.
  */
 //
 // Begin anonymous function. This is used to contain local scope variables without polutting global scope.
@@ -94,7 +102,7 @@ var sh = {
 			brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
 			
 			// this is populated by the build script
-			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Georgia,"Times New Roman",Times,serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-family:Geneva,Arial,Helvetica,sans-serif;font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.0.287 (February 06 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
+			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Georgia,\'Times New Roman\',Times,serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-family:Geneva,Arial,Helvetica,sans-serif;font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.0.296 (March 01 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
 		},
 
 		/** If true, output will show HTML produces instead. */
@@ -297,7 +305,7 @@ var sh = {
 					var config = sh.config;
 					
 					// disable functionality if running locally
-					if (window.location.protocol == 'file:' || config.clipboardSwf == null)
+					if (config.clipboardSwf == null)
 						return null;
 
 					function params(list)
@@ -324,7 +332,8 @@ var sh = {
 							width				: config.toolbarItemWidth,
 							height				: config.toolbarItemHeight,
 							id					: highlighterId + '_clipboard',
-							type				: 'application/x-shockwave-flash'
+							type				: 'application/x-shockwave-flash',
+							title				: sh.config.strings.copyToClipboard
 						},
 						
 						// these arguments are used in IE's <param /> collection
@@ -1336,7 +1345,7 @@ sh.Highlighter.prototype = {
 					+ '<code class="number">' + lineNumber + '.</code>'
 					+ '<span class="content">'
 						+ (spaces != null ? '<code class="spaces">' + spaces.replace(/\s/g, '&nbsp;') + '</code>' : '')
-						+ '<span class="block" style="margin-left: ' + indent + 'px;">' + line + '</span>'
+						+ '<span class="block" style="margin-left: ' + indent + 'px !important;">' + line + '</span>'
 					+ '</span>'
 				+ '</div>'
 			;
