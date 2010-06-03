@@ -1,5 +1,5 @@
 === SyntaxHighlighter Plus ===
-Contributors: matt, Viper007Bond, mdawaffe, FredWu
+Contributors: FredWu
 Tags: source, code, sourcecode, php, javascript, xhtml, html, css, syntax, highlight, highlighter
 Requires at least: 2.0
 Tested up to: 2.7.x
